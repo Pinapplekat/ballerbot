@@ -35,7 +35,7 @@ bot.on('messageCreate', async (message) => {
 		}
 		console.log(channelId)
 		if(beforeID.startsWith('@')){
-			return bot.users.cache.get(channelId).send(msgContent).catch(e => {
+			bot.users.cache.get(channelId).send(msgContent).catch(e => {
 				throw e
 			})
 		}else{
