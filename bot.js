@@ -20,16 +20,18 @@ bot.on('messageCreate', async (message) => {
 	message.delete()
   }
   if(message.content.toLocaleLowerCase().startsWith('!nuke')){
-	var commandContent = message.content.slice(message.content.indexOf(' ') + 1)
-	var amount = commandContent.slice(' ')[1]
+	console.log(message.content)
+	var amount = message.content.split(' ')[1]
+	console.log(amount)
 	amount = parseInt(amount)
 	if(amount > 0 && amount < 500){
 		message.delete()
 		message.channel.bulkDelete(amount)
+		message.author.send("The deed has been done. \n `deleted "+amount+" messages in channel #"+message.channel.name+"`")
 	}else{
 		if(amount > 500) return message.author.send('MAX MESSAGES TO DELETE IS 500!!')
 		if(amount < 1) return message.author.send('bro tried to delete no messages :skull:')
-		message.author.send('bruh thats not a number')
+		message.author.send('bruh thats not a number :cold_face:')
 	}
 	
   }
