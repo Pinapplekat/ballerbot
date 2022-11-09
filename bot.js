@@ -27,7 +27,7 @@ bot.on('messageCreate', async (message) => {
 	}else{
 		if(amount > 500) return message.author.send('MAX MESSAGES TO DELETE IS 500!!')
 		if(amount < 1) return message.author.send('bro tried to delete no messages :skull:')
-		message.auther.send('bruh thats not a number')
+		message.author.send('bruh thats not a number')
 	}
 	
   }
