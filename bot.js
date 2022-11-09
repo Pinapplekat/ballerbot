@@ -32,7 +32,7 @@ bot.on('messageCreate', async (message) => {
 			.catch(console.error);
 		message.author.send("The deed has been done. \n `deleted "+amount+" messages in channel #"+message.channel.name+"`")
 	}else{
-		if(amount > 500) return message.author.send('MAX MESSAGES TO DELETE IS 500!!')
+		if(amount >= 500) return message.author.send('MAX MESSAGES TO DELETE IS 500!!')
 		if(amount < 1) return message.author.send('bro tried to delete no messages :skull:')
 		message.author.send('bruh thats not a number :cold_face:')
 	}}catch(e){message.author.send(e)}
