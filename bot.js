@@ -15,8 +15,37 @@ const bot = new Client({
   });
 var announcements
 var general
+const fs = require('fs')
 bot.on('messageCreate', async (message) => {
 //   console.log(message.channel.id);
+  var levelsJson = JSON.parse(fs.readFileSync(__dirname+'/levels.json'))
+  var theUser = levelsJson.find(
+    (user) => user.id === message.author.id
+  )
+  if (theUser == null){
+	theUser = {
+		id: message.author.id,
+		xp: 0,
+		level: 0
+	}
+	levelsJson.push(theUser)
+	fs.writeFileSync(__dirname+'/levels.json', JSON.stringify(levelsJson))
+  }
+  theUser.xp = theUser.xp + 1
+  var oldLevel = theUser.level
+  if(oldLevel == null) console.log('NO OLD LEVEL')
+  var level = Math.floor(theUser.xp / 100)
+  theUser.level = level
+  fs.writeFileSync(__dirname+'/levels.json', JSON.stringify(levelsJson))
+  var levelUpMSG = [`hey! you are now level ${level}`, `guess who just got to level ${level}!`, `honestly, yuu deserve an award for reaching level ${level}`, `wow! i dont think even i could reach level ${level}, good job!`, `there they are officer! theres the one that reached level ${level}!!`, `wow you reached level ${level} fast`, `cant believe you are leveling up this fast! a whole ${level} levels!!`]
+  console.log(oldLevel)
+  console.log(level)
+  if(level != oldLevel){
+	message.author.send(levelUpMSG[Math.floor(Math.random() * levelUpMSG.length)])
+  }
+  if(message.content.toLocaleLowerCase().startsWith('!rank')){
+	message.channel.send(`<@${message.author.id}> \n Level: `+level+` \n ${theUser.xp}/${(level+1)*100} XP`)
+  }
   if(message.channel.id == '1039307220644528128'){
 	message.member.setNickname(message.content)
 	message.delete()
@@ -27,14 +56,14 @@ bot.on('messageCreate', async (message) => {
 	console.log(amount)
 	amount = parseInt(amount)
 	try{
-	if(amount > 0 && amount < 500){
+	if(amount > 0 && amount <= 500){
 		message.delete()
 		message.channel.bulkDelete(amount)
 			.then(messages => message.author.send("The deed has been done. \n `deleted "+messages.size+" messages in channel #"+message.channel.name+"`"))
 			.catch(console.error);
 		
 	}else{
-		if(amount >= 500) return message.author.send('MAX MESSAGES TO DELETE IS 500!!')
+		if(amount > 500) return message.author.send('MAX MESSAGES TO DELETE IS 500!!')
 		if(amount < 1) return message.author.send('bro tried to delete no messages :skull:')
 		message.author.send('bruh thats not a number :cold_face:')
 	}}catch(e){message.author.send(e)}
