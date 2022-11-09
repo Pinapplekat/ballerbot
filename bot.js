@@ -21,7 +21,7 @@ bot.on('messageCreate', async (message) => {
   }
   if(message.content.toLocaleLowerCase().startsWith('!nuke')){
 	var commandContent = message.content.slice(message.content.indexOf(' ') + 1)
-	var amount = commandContent.slice(0, commandContent.indexOf(' '))
+	var amount = commandContent.slice(' ')[1]
 	if(amount > 0 && amount < 500){
 		message.channel.bulkDelete(amount)
 	}else{
