@@ -1,4 +1,6 @@
 try{
+const express = require('express')
+var app = express()
 const { Client, GatewayIntentBits, Partials, Events } = require("discord.js")
 require('dotenv').config()
 const bot = new Client({
@@ -73,6 +75,7 @@ bot.once(Events.ClientReady, c => {
 	testChannel = bot.channels.cache.get('1038908405919780935');
 });
 bot.login(process.env.TOKEN)
+app.listen(process.env.PORT || 5000)
 }catch(er){
 	throw er
 }
