@@ -33,7 +33,6 @@ bot.on('messageCreate', async (message) => {
 		if(amount < 1) return message.author.send('bro tried to delete no messages :skull:')
 		message.author.send('bruh thats not a number :cold_face:')
 	}
-	
   }
   if(message.content.toLocaleLowerCase().startsWith('send')){
 	var commandContent = message.content.slice(message.content.indexOf(' ') + 1)
