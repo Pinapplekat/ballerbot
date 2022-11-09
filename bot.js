@@ -30,9 +30,9 @@ bot.on('messageCreate', async (message) => {
 	if(amount > 0 && amount < 500){
 		message.delete()
 		message.channel.bulkDelete(amount)
-			.then(messages => console.log(`Bulk deleted ${messages.size} messages`))
+			.then(messages => message.author.send("The deed has been done. \n `deleted "+messages.size+" messages in channel #"+message.channel.name+"`"))
 			.catch(console.error);
-		message.author.send("The deed has been done. \n `deleted "+amount+" messages in channel #"+message.channel.name+"`")
+		
 	}else{
 		if(amount >= 500) return message.author.send('MAX MESSAGES TO DELETE IS 500!!')
 		if(amount < 1) return message.author.send('bro tried to delete no messages :skull:')
