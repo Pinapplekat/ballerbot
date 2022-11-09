@@ -1,4 +1,8 @@
 try{
+var http = require("http");
+setInterval(function() {
+    http.get("http://obscure-plateau-46006.herokuapp.com");
+}, 300000);
 const express = require('express')
 var app = express()
 const { Client, GatewayIntentBits, Partials, Events } = require("discord.js")
