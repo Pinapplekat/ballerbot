@@ -110,7 +110,7 @@ bot.once(Events.ClientReady, c => {
 	announcements = bot.channels.cache.get('1038896869193023588');
 	general = bot.channels.cache.get('1038884143959908433');
 	testChannel = bot.channels.cache.get('1038908405919780935');
-	client.user.setPresence({
+	bot.user.setPresence({
 		activities: [{ name: `its ballin time`, type: ActivityType.Watching  }],
 		status: 'dnd',
 	  });
