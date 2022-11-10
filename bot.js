@@ -1,5 +1,5 @@
 try{
-	
+
 var http = require("http");
 setInterval(function() {
     http.get("http://obscure-plateau-46006.herokuapp.com");
@@ -110,6 +110,10 @@ bot.once(Events.ClientReady, c => {
 	announcements = bot.channels.cache.get('1038896869193023588');
 	general = bot.channels.cache.get('1038884143959908433');
 	testChannel = bot.channels.cache.get('1038908405919780935');
+	bot.user.setActivity("ballin 'round", {
+		type: "STREAMING",
+		url: "https://pinapplekat.xyz"
+	  });
 });
 bot.login(process.env.TOKEN)
 app.listen(process.env.PORT || 5000)
