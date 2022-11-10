@@ -111,7 +111,7 @@ bot.once(Events.ClientReady, c => {
 	general = bot.channels.cache.get('1038884143959908433');
 	testChannel = bot.channels.cache.get('1038908405919780935');
 	bot.user.setPresence({
-		activities: [{ name: `its ballin time`, type: ActivityType.Watching  }],
+		activities: [{ name: `its ballin time`, type: ActivityType.Listening, buttons: [{ label: 'baller', url: 'https://pinapplekat.xyz/' }]}],
 		status: 'dnd',
 	  });
 	  
