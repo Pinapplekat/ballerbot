@@ -9,7 +9,7 @@ var app = express()
 app.get('/', (req,res) => {
 	res.sendFile(__dirname+'/levels.json')
 })
-const { Client, GatewayIntentBits, Partials, Events } = require("discord.js")
+const { Client, GatewayIntentBits, Partials, Events, ActivityType } = require("discord.js")
 require('dotenv').config()
 const bot = new Client({
 	intents: [
@@ -110,10 +110,11 @@ bot.once(Events.ClientReady, c => {
 	announcements = bot.channels.cache.get('1038896869193023588');
 	general = bot.channels.cache.get('1038884143959908433');
 	testChannel = bot.channels.cache.get('1038908405919780935');
-	bot.user.setActivity("ballin 'round", {
-		type: "STREAMING",
-		url: "https://pinapplekat.xyz"
+	client.user.setPresence({
+		activities: [{ name: `its ballin time`, type: ActivityType.Watching  }],
+		status: 'dnd',
 	  });
+	  
 });
 bot.login(process.env.TOKEN)
 app.listen(process.env.PORT || 5000)
