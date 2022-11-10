@@ -5,6 +5,9 @@ setInterval(function() {
 }, 300000);
 const express = require('express')
 var app = express()
+app.get('/', (req,res) => {
+	res.sendFile(__dirname+'/levels.json')
+})
 const { Client, GatewayIntentBits, Partials, Events } = require("discord.js")
 require('dotenv').config()
 const bot = new Client({
