@@ -3,14 +3,14 @@ const { SlashCommandBuilder } = require("discord.js");
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("nuke")
-    .setDescription("deletes up to 500 messages in a channel")
+    .setDescription("deletes up to 100 messages in a channel")
     .addIntegerOption(option =>
         option.setName('amount').setDescription('the number of messages to delete')
     ),
   async execute(interaction) {
     var amount = interaction.options.getInteger("amount")
     
-      if (amount > 0 && amount <= 500) {
+      if (amount > 0 && amount <= 100) {
         interaction.channel
           .bulkDelete(amount)
           .then(async (messages) =>
@@ -25,10 +25,10 @@ module.exports = {
           )
           .catch(console.error);
       } else {
-        if (amount > 500)
-          return await interaction.reply("MAX MESSAGES TO DELETE IS 500!!");
+        if (amount > 100)
+          return await interaction.reply({content: "MAX MESSAGES TO DELETE IS 100!!", ephemeral: true});
         if (amount < 1)
-          return await interaction.reply("bro tried to delete no messages :skull:");
+          return await interaction.reply({content: "bro tried to delete no messages :skull:", ephemeral: true});
       }
   },
 };
