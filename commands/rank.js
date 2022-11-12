@@ -25,7 +25,7 @@ module.exports = {
         };
       }
       await interaction.reply(
-        `<@${userop.id}>\nLevel: ${theUser.level}\nXP: ${theUser.xp}`
+        `<@${userop.id}>\nLevel: ${theUser.level}\nXP: ${theUser.xp}\nReputation: ${theUser.reputation}`
       );
     } else {
       var ranks = JSON.parse(
@@ -40,7 +40,7 @@ module.exports = {
         };
       }
       await interaction.reply(
-        `<@${theUser.id}>\nLevel: ${theUser.level}\nXP: ${theUser.xp}`
+        `<@${theUser.id}>\nLevel: ${theUser.level}\nXP: ${theUser.xp}\nReputation: ${theUser.reputation}`
       );
     }
   },
