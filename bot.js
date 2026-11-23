@@ -12,7 +12,7 @@ try {
   });
   const { google } = require("googleapis");
 
-  API_KEY = "AIzaSyAP4riuyorYFCiqFiIutE0nTxlyZ39XNrc";
+  API_KEY = "insert api key here";
   DISCOVERY_URL =
     "https://commentanalyzer.googleapis.com/$discovery/rest?version=v1alpha1";
 
